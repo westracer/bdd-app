@@ -11,12 +11,6 @@ import static org.junit.Assert.*;
 public class ChordStepdefs {
     private Chord chord1, chord2;
 
-//    @Given("Created two chords with same fields")
-//    public void createdTwoChordsWithSameFields() {
-//        chord1 = new Chord(ChordRoot.A, ChordType.five);
-//        chord2 = new Chord(ChordRoot.A, ChordType.five);
-//    }
-
     @Then("Created two chords with same fields: root {string}, type {string}")
     public void createdTwoChordsWithSameFields(String root, String type) {
         chord1 = new Chord(ChordRoot.valueOf(root), ChordType.valueOf(type));
