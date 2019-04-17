@@ -1,4 +1,5 @@
 Feature: Chord generating
+
   Scenario: Comparing two same chords
     Given Created two chords with same fields
     Then Chords should be equal
@@ -6,3 +7,11 @@ Feature: Chord generating
   Scenario: Comparing two different chords
     Given Created two chords with different fields
     Then Chords should be not equal
+
+  Scenario: Comparing two generated chords
+    Given Two generated chords
+    Then Chords should be not equal
+
+  Scenario: Converting chord object to strings
+    Given Created two chords with different fields
+    Then String representations should be 'A5' and 'D#7'

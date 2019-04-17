@@ -23,6 +23,17 @@ public class ChordStepdefs {
         chord2 = new Chord(ChordRoot.Ds, ChordType.seven);
     }
 
+    @Given("Two generated chords")
+    public void twoGeneratedChords() {
+        chord1 = Chord.generate();
+
+        for (int i = 0; i < 5; i++) {
+            chord2 = Chord.generate();
+            if (chord1.root != chord2.root || chord1.type != chord2.type)
+                break;
+        }
+    }
+
     @Then("Chords should be equal")
     public void chordsShouldBeEqual() {
         assertEquals("Объекты не совпадают", chord1, chord2);
@@ -31,5 +42,11 @@ public class ChordStepdefs {
     @Then("Chords should be not equal")
     public void chordsShouldBeNotEqual() {
         assertNotEquals("Объекты совпадают", chord1, chord2);
+    }
+
+    @Then("String representations should be {string} and {string}")
+    public void stringRepresentationsShouldBeAAndD(String arg0, String arg1) {
+        assertEquals("Названия аккордов не совпадают", arg0, chord1.toString());
+        assertEquals("Названия аккордов не совпадают", arg1, chord2.toString());
     }
 }
